@@ -1,8 +1,30 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import { Card, Col, Container, Row } from "react-bootstrap";
+import history from "../data/books/history.json";
 
-function BasicExample() {
+const Books = () => {
   return (
+    <Container>
+      <Row className="d-flex">
+        {history.slice(0, 12).map((book) => {
+          return (
+            <Col xs={12} md={3} key={book.asin}>
+              <Card>
+                <Card.Img variant="top" src={book.img} />
+                <Card.Body>
+                  <Card.Title>{book.title}</Card.Title>
+                  <Card.Text>{book.price}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })}
+      </Row>
+    </Container>
+  );
+};
+
+export default Books;
+/*
     <Card style={{ width: "18rem" }} className="">
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
@@ -18,3 +40,4 @@ function BasicExample() {
 }
 
 export default BasicExample;
+*/
